@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LocDrop Demo</title>
+<meta name="description" content="LocDrop: leave a note where you stand. Only people who come close can read it.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='12' fill='%23ff6b4a'/%3E%3Cpath d='M12 19s-5-4.4-5-8.2a5 5 0 0 1 10 0C17 14.6 12 19 12 19z' fill='none' stroke='white' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --ink: #21314d; --muted: #5f6f88; --coral: #ff6b4a; --coral-deep: #d9482a; --green-deep: #3f9a14; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    min-height: 100vh; font-family: "Nunito Sans", system-ui, sans-serif; color: var(--ink);
+    background: linear-gradient(180deg, #bfeaff 0%, #def5ff 38%, #eef9e2 70%, #d3efbb 100%);
+    display: flex; align-items: center; justify-content: center; padding: 32px 16px;
+  }
+  main { width: 100%; max-width: 880px; display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center; }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .pin { width: 52px; height: 52px; border-radius: 50%; background: var(--coral); display: grid; place-items: center; box-shadow: 0 4px 0 var(--coral-deep); flex: none; }
+  h1 { font-family: "Fredoka", sans-serif; font-weight: 700; font-size: 52px; line-height: 1; letter-spacing: -0.01em; }
+  .tagline { font-family: "Fredoka", sans-serif; font-weight: 500; font-size: 24px; line-height: 1.3; margin-top: 20px; }
+  .sub { color: var(--muted); font-size: 17px; line-height: 1.55; margin-top: 12px; max-width: 460px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px; margin-top: 28px; padding: 16px 28px;
+    background: var(--coral); color: #fff; text-decoration: none; border-radius: 999px;
+    font-family: "Fredoka", sans-serif; font-weight: 600; font-size: 20px;
+    box-shadow: 0 5px 0 var(--coral-deep); transition: transform .08s, box-shadow .08s;
+  }
+  .btn:hover { transform: translateY(1px); box-shadow: 0 4px 0 var(--coral-deep); }
+  .btn:active { transform: translateY(5px); box-shadow: 0 0 0 var(--coral-deep); }
+  .btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 4px; }
+  ol { margin-top: 28px; padding-left: 0; list-style: none; counter-reset: s; max-width: 460px; }
+  ol li { counter-increment: s; position: relative; padding-left: 38px; margin-top: 12px; font-size: 16px; line-height: 1.45; }
+  ol li::before {
+    content: counter(s); position: absolute; left: 0; top: -1px; width: 26px; height: 26px; border-radius: 50%;
+    background: #fff; color: var(--green-deep); font-family: "Fredoka", sans-serif; font-weight: 600; font-size: 15px;
+    display: grid; place-items: center; box-shadow: 0 2px 0 #c9dfb4;
+  }
+  .phone { width: 260px; border-radius: 34px; border: 9px solid var(--ink); overflow: hidden; background: var(--ink); box-shadow: 0 18px 40px rgba(33,49,77,.25); transform: rotate(3deg); }
+  .phone img { display: block; width: 100%; height: auto; }
+  footer { margin-top: 32px; font-size: 13px; color: var(--muted); }
+  @media (max-width: 720px) {
+    main { grid-template-columns: 1fr; gap: 36px; text-align: left; }
+    h1 { font-size: 44px; }
+    .tagline { font-size: 21px; }
+    .phone { width: 220px; margin: 0 auto; }
+    .btn { width: 100%; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <section>
+    <div class="brand">
+      <div class="pin" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+      </div>
+      <h1>LocDrop</h1>
+    </div>
+    <p class="tagline">Leave a note where you stand. Only people who come close can read it.</p>
+    <p class="sub">Drop a short note at your location. Anyone within 100&nbsp;m sees a pin on their map, and the server checks they're really there before the note opens.</p>
+
+    <!-- ============================================================
+         TO CHANGE THE DEMO LINK: edit the address inside href="..."
+         on the next line, then click "Commit changes".
+         ============================================================ -->
+    <a class="btn" href="https://main.d26lfobsto0b1s.amplifyapp.com/">
+      Open the demo
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+
+    <ol>
+      <li>Open it on your phone and create an account (username and password only, no email).</li>
+      <li>Allow location. The live map centres on you with your 100&nbsp;m range.</li>
+      <li>Tap <strong>+ Drop</strong> to leave a note. Best with a friend nearby, who will see your pin appear and can open it.</li>
+    </ol>
+    <footer>Map data © OpenStreetMap contributors · OpenFreeMap · MapLibre</footer>
+  </section>
+  <div class="phone"><img src="img/map.jpg" width="390" height="844" alt="LocDrop live map with note pins within a 100 m range ring"></div>
+</main>
+</body>
+</html>
