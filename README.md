@@ -1,8 +1,4 @@
-# LocDrop-demo
-Click the link to check out the Demo Version of LocDrop:
-https://main.d26lfobsto0b1s.amplifyapp.com/
-
-## The demo page
+## LocDrop demo page
 
 The portfolio's QR code points to this repo's GitHub Pages site:
 **https://christohartanto.github.io/LocDrop-demo/**
